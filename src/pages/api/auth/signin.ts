@@ -15,7 +15,7 @@ export const POST: APIRoute = async ({ request, cookies, redirect }) => {
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider: provider as Provider,
       options: {
-        redirectTo: "https://gosolaname.netlify.app/api/auth/callback"
+        redirectTo: import.meta.env.DEV ? "http://localhost:4321/api/auth/callback" : "https://gosolaname.netlify.app/api/auth/callback",
       },
     });
 
